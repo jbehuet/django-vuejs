@@ -3,3 +3,5 @@
 **/node_modules/
 /backend/static/
 /backend/templates/
+/backend/db.sqlite3
+**/migrations/
