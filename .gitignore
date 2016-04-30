@@ -1,5 +1,5 @@
 .DS_Store
-.pyc
+*.pyc
 **/node_modules/
 /backend/static/
 /backend/templates/
