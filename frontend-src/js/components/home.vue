@@ -1,9 +1,19 @@
 <template>
-<div class="col-sm-6 col-sm-offset-3">
-  <h1>Get a Free Chuck Norris Quote!</h1>
-  <button class="btn btn-primary" v-on:click="getQuote()">Get a Quote</button>
-  <div class="quote-area" v-if="quote">
-    <h2><blockquote></blockquote></h2>      
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Todos</h1>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-primary pull-right btn-todos" v-on:click="getTodos()">Get todos</button>
+      </div>
+    </div>
+    <div v-if="todos">
+      <li v-for="todo in todos">
+        {{ todo.description }}
+      </li>
+    </div>
   </div>
 </div>
 </template>
@@ -12,16 +22,14 @@
 export default {
     data() {
       return {
-        quote: ''
+        todos: ''
       }
     },
     methods: {
-      getQuote() {
-        this.$http
-          .get('http://localhost:8000/api/todos', (data) => {
-            this.quote = data;
+      getTodos() {
+        this.$http.get('/api/todos').then((res) => {
+            this.todos = res.data;
           })
-          .error((err) => console.log(err))
       }
     }
 }

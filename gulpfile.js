@@ -104,8 +104,10 @@ gulp.task('dev', ['frontend-static-all', 'minify'], function() {
 
 gulp.task('frontend-static-all', function() {
     // Pipe anything that is not HTML directly
-    return gulp.src(PATHS['static'] + "**/*")
-        .pipe(gulp.dest(PATHS['dist_templates']))
+    gulp.src(PATHS['static'] + "**/*.html")
+        .pipe(gulp.dest(PATHS['dist_templates']));
+    return gulp.src(PATHS['static'] + "**/css/*")
+        .pipe(gulp.dest(PATHS['dist_static']))
         .pipe(livereload());
 });
 
