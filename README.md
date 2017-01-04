@@ -39,7 +39,10 @@ Windows: `venv\Scripts\activate`
 
 ### Prepare database
 
+`$ python backend/manage.py makemigrations todos`
+
 `$ python backend/manage.py migrate`
+
 
 ### Create SuperUser
 
